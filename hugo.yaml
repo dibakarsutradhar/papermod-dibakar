@@ -3,6 +3,15 @@ languageCode: en-us
 title: Dibakar Sutra Dhar
 theme: ['PaperMod']
 
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+# mainsections: ['posts', 'papermod']
+
 params:
   # env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Dibakar Sutra Dhar
@@ -19,7 +28,7 @@ params:
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
@@ -56,9 +65,9 @@ params:
 
 menu:
   main:
-    - identifier: posts
-      name: posts
-      url: /posts/
+    - identifier: blog
+      name: blogs
+      url: /blogs/
       weight: 10
     - identifier: tags
       name: tags
