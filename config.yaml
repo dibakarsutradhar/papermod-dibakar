@@ -1,4 +1,4 @@
-baseURL: https://example.org/
+baseURL: https://papermod-dibakar.pages.dev/
 languageCode: en-us
 title: Dibakar Sutra Dhar
 theme: ['PaperMod']
@@ -15,7 +15,7 @@ pygmentsUseClasses: true
 params:
   # env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Dibakar Sutra Dhar
-  description: 'ExampleSite description'
+  description: Personal blogs of Dibakar, a SWE focused on server side
   keywords: [Blog, Portfolio, PaperMod]
   author: dibakarsutradhar
   # author: ["Me", "You"] # multiple authors
@@ -75,5 +75,5 @@ menu:
       weight: 20
     - identifier: portfolio
       name: chainrunner
-      url: https://example.org
+      # url: https://example.org
       weight: 30
