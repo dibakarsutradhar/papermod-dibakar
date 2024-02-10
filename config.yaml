@@ -10,10 +10,19 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-# mainsections: ['posts', 'papermod']
+mainsections: ['blogs', 'papermod']
+
+minify:
+  disableXML: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
 
 params:
-  # env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Dibakar Sutra Dhar
   description: Personal blogs of Dibakar, a SWE focused on server side
   keywords: [Blog, Portfolio, PaperMod]
@@ -40,15 +49,33 @@ params:
   showtoc: false
   tocopen: false
 
+  profileMode:
+    enabled: true
+    title: 'dibakar sutra dhar' # optional default will be site title
+    subtitle: 'i design softwares for living'
+    # imageUrl: '<image link>' # optional
+    imageTitle: '<title of image as alt>' # optional
+    imageWidth: 120 # custom size
+    imageHeight: 120 # custom size
+    buttons:
+      - name: whoami
+        url: '/whoami'
+      - name: blogs
+        url: '/blogs/'
+      - name: archives
+        url: '/archives/'
+      - name: resume
+        url: 'https://github.com/'
+
   # home-info mode
-  homeInfoParams:
-    Title: "Hi there \U0001F44B, it's Dibakar"
-    Content: >
-      I'm a **Software Engineer**, and I write things on the server side.
+  # homeInfoParams:
+  #   Title: "Hi there \U0001F44B, it's Dibakar"
+  #   Content: >
+  #     I'm a **Software Engineer**, and I write things on the server side.
 
-      - I mainly use Node.js with JS/TS to write stuffs. However, I've been writing Python with Django for over a year now due to work.
+  #     - I mainly use Node.js with JS/TS to write stuffs. However, I've been writing Python with Django for over a year now due to work.
 
-      - Recently, I'm learning Rust and Dev Ops.
+  #     - Recently, I'm learning Rust and Dev Ops.
 
   socialIcons:
     - name: github
@@ -63,6 +90,23 @@ params:
     #   title: Buy me a Ko-Fi :)
     #   url: 'https://ko-fi.com/username'
 
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ['title', 'permalink', 'summary', 'content']
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
 menu:
   main:
     - identifier: blog
@@ -73,6 +117,10 @@ menu:
       name: tags
       url: /tags/
       weight: 20
+    - identifier: search
+      name: search
+      url: /search/
+      weight: 25
     - identifier: portfolio
       name: chainrunner
       # url: https://example.org
