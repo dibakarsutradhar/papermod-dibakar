@@ -1,6 +1,6 @@
 baseURL: https://papermod-dibakar.pages.dev/
 languageCode: en-us
-title: Dibakar Sutra Dhar
+title: dibakar
 theme: ['PaperMod']
 
 enableInlineShortcodes: true
@@ -23,14 +23,14 @@ outputs:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: Dibakar Sutra Dhar
-  description: Personal blogs of Dibakar, a SWE focused on server side
+  title: dibakar
+  description: personal blogs of Dibakar, a SWE focused on server side
   keywords: [Blog, Portfolio, PaperMod]
-  author: dibakarsutradhar
+  # author: dibakar
   # author: ["Me", "You"] # multiple authors
-  # images: ['<link or path of image for opengraph, twitter-cards>']
+  # images: ['']
   DateFormat: '2 January 2006'
-  defaultTheme: auto # dark, light
+  defaultTheme: dark # auto, light
   disableThemeToggle: false
 
   ShowReadingTime: true
@@ -39,32 +39,30 @@ params:
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   ShowWordCount: true
-  ShowRssButtonInSectionTermList: true
+  ShowRssButtonInSectionTermList: false
   UseHugoToc: true
   disableSpecial1stPost: false
   disableScrollToTop: false
   comments: false
   hidemeta: false
   hideSummary: false
-  showtoc: false
+  showtoc: true
   tocopen: false
 
   profileMode:
     enabled: true
     title: 'dibakar sutra dhar' # optional default will be site title
     subtitle: 'i design softwares for living'
-    # imageUrl: '<image link>' # optional
-    imageTitle: '<title of image as alt>' # optional
-    imageWidth: 120 # custom size
-    imageHeight: 120 # custom size
+    imageUrl: 'images/profile.png' # optional
+    imageTitle: "dibakar's headshot" # optional
+    imageWidth: 140 # custom size
+    imageHeight: 140 # custom size
     buttons:
       - name: whoami
         url: '/whoami'
-      - name: blogs
-        url: '/blogs/'
       - name: archives
         url: '/archives/'
-      - name: resume
+      - name: calendly
         url: 'https://github.com/'
 
   # home-info mode
@@ -80,15 +78,20 @@ params:
   socialIcons:
     - name: github
       url: 'https://github.com/dibakarsutradhar'
-    - name: Discord
-      url: 'https://discord.gg/imdibakar'
-    - name: X
+    - name: x
       url: 'https://x.com/d1bakar'
-    - name: LinkedIn
+    - name: linkedin
       url: 'https://linkedin.com/in/dibakarsutradhar'
-    # - name: KoFi
-    #   title: Buy me a Ko-Fi :)
-    #   url: 'https://ko-fi.com/username'
+    - name: email
+      url: 'mailto:iamdibakardipu@gmail.com'
+    - name: medium
+      url: 'https://medium.com/@imdibakar'
+    - name: cv
+      url: 'https://linkedin.com/in/dibakarsutradhar'
+    - name: buymeacoffee
+      url: 'https://buymeacoffee.com'
+
+  ShareButtons: ['linkedin', 'x', 'reddit', 'facebook', 'whatsapp', 'telegram']
 
   fuseOpts:
     isCaseSensitive: false
