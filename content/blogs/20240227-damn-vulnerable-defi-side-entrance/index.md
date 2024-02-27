@@ -85,7 +85,7 @@ This simple lending pool contract has only 3 functions.
 2. `withdraw()` is an external function that allows the user to withdraw their entire balance from this contract given that they have already deposited some eth into the pool. It updates the state variable before making an external call `safeTransferETH` to the `msg.sender` makes it sort of protected from any reentrancy attack.
 3. `flashLoan()` is the last function that issues loan to anyone for the any amount. It caches the current balance of the contract in a memory variable `balancedBefore`, after that it proceeds to send the requested loan amount to the `msg.sender` . Most importantly, it ensures that the callback recipient pays back the borrowed loan by comparing the contract’s balance before and after the transaction.
 
-#### Flash Loan
+### Flash Loan
 
 A flash loan is a loan that required to be repaid in the same transaction. Failure to do so will revert the whole transaction from the origin. As an example, you create a contract which will call the flashLoan contract asking for the loan, once the flashLoan contract grants you the loan, it comes back to your contract, and in the same transaction you call another contract to do something with that loan amount, once done, you repay back the loan amount to the flashLoan contract with required fees, all in one single transaction.
 
