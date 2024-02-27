@@ -12,7 +12,7 @@ cover:
   image:
 ---
 
-# Objectives
+## Objectives
 
 A surprisingly simple pool allows anyone to deposit ETH, and withdraw it at any point in time.
 
@@ -20,7 +20,7 @@ It has 1000 ETH in balance already, and is offering free flash loans using the d
 
 Starting with 1 ETH in balance, pass the challenge by taking all ETH from the pool.
 
-# Contract
+## Contract
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -73,11 +73,11 @@ contract SideEntranceLenderPool {
 
 ```
 
-# Re-entrancy Attack
+## Re-entrancy Attack
 
 [Re-entrancy](https://github.com/dibakarsutradhar/antisec/blob/566c93c215231a88040651cc6abbd4182cc472ca/blockchain/ethernaut-ctf/reentrancy/README.md?plain=1#L52)
 
-# Analysis
+## Analysis
 
 This simple lending pool contract has only 3 functions.
 
@@ -85,11 +85,11 @@ This simple lending pool contract has only 3 functions.
 2. `withdraw()` is an external function that allows the user to withdraw their entire balance from this contract given that they have already deposited some eth into the pool. It updates the state variable before making an external call `safeTransferETH` to the `msg.sender` makes it sort of protected from any reentrancy attack.
 3. `flashLoan()` is the last function that issues loan to anyone for the any amount. It caches the current balance of the contract in a memory variable `balancedBefore`, after that it proceeds to send the requested loan amount to the `msg.sender` . Most importantly, it ensures that the callback recipient pays back the borrowed loan by comparing the contract’s balance before and after the transaction.
 
-## Flash Loan
+#### Flash Loan
 
 A flash loan is a loan that required to be repaid in the same transaction. Failure to do so will revert the whole transaction from the origin. As an example, you create a contract which will call the flashLoan contract asking for the loan, once the flashLoan contract grants you the loan, it comes back to your contract, and in the same transaction you call another contract to do something with that loan amount, once done, you repay back the loan amount to the flashLoan contract with required fees, all in one single transaction.
 
-# AntiSec
+## AntiSec
 
 On the surface lever, this looks like a contract that is well written and does not reveal any common vulnerabilities like reentrancy or overflows. However, if we dig deep into this contract and think creatively, we can see a pattern that can be used to exploit this contract and drain the balance.
 
@@ -97,7 +97,7 @@ There are two ways to send token or ETH to this contract, one is `deposit()` and
 
 So, what if borrower uses the `flashLoan()` to borrow the loan and repay back using the `deposit()` during the same transaction? The `deposit()` will then update the contract balances and map this amount to the borrower’s address, and with that at the end of the transaction call, the current balance of the contract will be equal or more than the `balanceBefore` making the flashLoan a successful transaction. And now, the borrower can call the `withdraw` function to take out the entire borrowed amount from the contract risk freely. This is called `Cross Function Reentrancy`, which uses one or numerous functions in a contract to exploit the same contract.
 
-# Proof of Concept
+## Proof of Concept
 
 We have to write an Attack contract that will carry out the entire hack. We would need the interface of `SideEntranceLenderPool.sol` to implement this contract. We will start by setting up the `constructor` that will set up the victim contract address and attacker address.
 
@@ -207,7 +207,7 @@ And upon running the test, you should see the test is passing in the terminal.
 
 ![Challenge Pass](https://github.com/dibakarsutradhar/antisec/blob/main/blockchain/damn-vulnerable/images/04-side-entrance-1.png?raw=true)
 
-# Mitigation
+## Mitigation
 
 It is not wise to change the lender’s balance during processing the loan when the lender verifies the correctness of the loan repayment on the base of its balance. This cross function reentrancy could be prevented by not allowing reentry during a function call by using a `nonReentrant` modifier on all functions that can change the balance of the contract.
 
