@@ -63,7 +63,7 @@ params:
       - name: archives
         url: '/archives/'
       - name: calendly
-        url: 'https://github.com/'
+        url: 'https://calendly.com/dibakarsutradhar/take-a-coffee-break'
 
   # home-info mode
   # homeInfoParams:
@@ -86,10 +86,8 @@ params:
       url: 'mailto:iamdibakardipu@gmail.com'
     - name: medium
       url: 'https://medium.com/@imdibakar'
-    - name: cv
-      url: 'https://linkedin.com/in/dibakarsutradhar'
-    - name: buymeacoffee
-      url: 'https://buymeacoffee.com'
+    - name: telegram
+      url: 'https://t.me/imghostly'
 
   ShareButtons: ['linkedin', 'x', 'reddit', 'facebook', 'whatsapp', 'telegram']
 
